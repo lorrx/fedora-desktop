@@ -15,8 +15,10 @@ sudo chmod 755 ${VENV_HOME}
 # Create and activate Python env
 python3 -m venv ${VENV_HOME}/.venv
 source "${VENV_HOME}/.venv/bin/activate"
-pip install ansible
+pip install --upgrade pip
+pip install --upgrade ansible
 
 # Run Ansible playbook in pull mode
+ANSIBLE_PULL_BIN=$(which ansible-pull)
 cd ${VENV_HOME}
-sudo ansible-pull -U https://github.com/lorrx/fedora-desktop.git -C main pb-fedora.yml
+sudo ${ANSIBLE_PULL_BIN} -U https://github.com/lorrx/fedora-desktop.git -C main pb-fedora.yml
