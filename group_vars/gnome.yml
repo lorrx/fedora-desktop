@@ -1,0 +1,11 @@
+---
+software_copr_repos:
+  - quadratech188/vicinae
+
+software_dnf_packages:
+  - sushi
+  - vicinae
+  - fzf
+  - bat
+  - zsh
+  - zsh-syntax-highlighting

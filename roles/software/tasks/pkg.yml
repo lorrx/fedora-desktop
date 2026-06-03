@@ -1,0 +1,10 @@
+---
+- name: "Software | Update all packages" # noqa package-latest
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+
+- name: "Software | Install all requested DNF packages"
+  ansible.builtin.dnf:
+    name: "{{ software_dnf_packages }}"
+    state: present

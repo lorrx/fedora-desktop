@@ -1,0 +1,8 @@
+---
+- name: "Software | Enable all requested COPR repositories"
+  community.general.copr:
+    name: "{{ software_copr_repo }}"
+    state: enabled
+  loop: software_copr_repos
+  loop_control:
+    loop_var: software_copr_repo
