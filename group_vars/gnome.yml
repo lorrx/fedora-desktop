@@ -9,3 +9,4 @@ software_dnf_packages:
   - bat
   - zsh
   - zsh-syntax-highlighting
+  - gnome-tweaks
