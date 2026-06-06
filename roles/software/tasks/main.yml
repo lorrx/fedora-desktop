@@ -1,8 +1,14 @@
 ---
 - name: "Software | Include repository tasks"
+  args:
+    apply:
+      become: true
   ansible.builtin.include_tasks:
     file: repo.yml
 
 - name: "Software | Include package tasks"
+  args:
+    apply:
+      become: true
   ansible.builtin.include_tasks:
     file: pkg.yml

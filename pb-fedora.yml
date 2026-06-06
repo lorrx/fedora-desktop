@@ -1,6 +1,6 @@
 ---
 - name: "Playbook to configure Fedora Workstation with GNOME"
   hosts: all
-  become: true
+  become: false
   roles:
     - software
