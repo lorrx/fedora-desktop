@@ -19,6 +19,5 @@ pip install --upgrade pip
 pip install --upgrade ansible
 
 # Run Ansible playbook in pull mode
-ANSIBLE_PULL_BIN=$(which ansible-pull)
 cd ${VENV_HOME}
-sudo ${ANSIBLE_PULL_BIN} -U https://github.com/lorrx/fedora-desktop.git -C main pb-fedora.yml
+ansible-pull -U https://github.com/lorrx/fedora-desktop.git -C main pb-fedora.yml
