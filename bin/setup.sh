@@ -20,4 +20,4 @@ pip install --upgrade ansible
 
 # Run Ansible playbook in pull mode
 cd ${VENV_HOME}
-ansible-pull -U https://github.com/lorrx/fedora-desktop.git -C main pb-fedora.yml --ask-become-pass
+ansible-pull -U https://github.com/lorrx/fedora-desktop.git -C main pb-fedora.yml
