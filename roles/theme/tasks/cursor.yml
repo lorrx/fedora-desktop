@@ -1,0 +1,5 @@
+---
+- name: "cursor | Copy BreezeX library"
+  ansible.builtin.unarchive:
+    src: files/BreezeX.tar.xz
+    dest: ~/.icons/

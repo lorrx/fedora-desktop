@@ -1,0 +1,4 @@
+---
+- name: "Install cursor theme"
+  ansible.builtin.include_tasks:
+    file: cursor.yml
