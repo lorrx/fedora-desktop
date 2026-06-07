@@ -13,7 +13,7 @@
 - name: "cursor | Set interface font"
   community.general.dconf:
     key: "/org/gnome/desktop/interface/{{ theme_font_key }}"
-    value: "{{ theme.font.name }} {{ theme.font.size }}"
+    value: "'{{ theme.font.name }} {{ theme.font.size }}'"
     state: present
   loop:
     - font-name
