@@ -1,4 +1,10 @@
 ---
+- name: "cursor | Ensure icons directory exists"
+  ansible.builtin.file:
+    path: ~/.icons
+    state: directory
+    mode: '0755'
+
 - name: "cursor | Copy BreezeX library"
   ansible.builtin.unarchive:
     src: files/BreezeX.tar.xz
