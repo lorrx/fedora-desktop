@@ -1,0 +1,4 @@
+---
+- name: "Create global directories"
+  ansible.builtin.include_tasks:
+    file: directories.yml

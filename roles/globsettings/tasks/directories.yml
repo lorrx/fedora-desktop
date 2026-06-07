@@ -1,0 +1,8 @@
+---
+- name: "directories | Ensure global workdir exists"
+  ansible.builtin.file:
+    path: "{{ globsettings_workdir }}"
+    owner: "{{ globsettings_user }}"
+    group: "{{ globsettings_group }}"
+    mode: '0755'
+    state: directory

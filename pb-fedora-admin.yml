@@ -1,6 +1,16 @@
 ---
+- name: "Set facts for preparation"
+  hosts: all
+  become: false
+  tasks:
+    - name: "Set user facts"
+      ansible.builtin.set_fact:
+        globsettings_user: "{{ ansible_facts['user_id'] }}"
+        globsettings_group: "{{ ansible_facts['user_id'] }}"
+
 - name: "Install required software on Fedora Workstation as root"
   hosts: all
   become: true
   roles:
+    - globsettings
     - software

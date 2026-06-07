@@ -1,4 +1,8 @@
 ---
+globsettings_workdir: /opt/lorrx
+globsettings_user: ''
+globsettings_group: ''
+
 software_copr_repos:
   - quadratech188/vicinae
 
