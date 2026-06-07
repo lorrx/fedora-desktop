@@ -1,0 +1,21 @@
+---
+- name: "font | Ensure fonts directory exists"
+  ansible.builtin.file:
+    path: ~/.local/share/fonts
+    state: directory
+    mode: '0755'
+
+- name: "font | Copy JetBrains Mono font"
+  ansible.builtin.unarchive:
+    src: files/JetBrainsMono.zip
+    dest: ~/.local/share/fonts
+
+- name: "cursor | Set interface font"
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/{{ theme_font_key }}"
+    value: "{{ theme.font.name }} {{ theme.font.size }}"
+    state: present
+  loop:
+    - font-name
+    - document-font-name
+    - monospace-font-name

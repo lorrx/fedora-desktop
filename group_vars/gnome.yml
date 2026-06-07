@@ -20,3 +20,6 @@ theme:
   icon:
     name: "whitesur"
     accent: "orange"
+  font:
+    name: "JetBrains Mono Regular"
+    size: 11

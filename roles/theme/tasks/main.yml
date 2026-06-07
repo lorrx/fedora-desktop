@@ -6,3 +6,7 @@
 - name: "Install icon theme"
   ansible.builtin.include_tasks:
     file: icon.yml
+
+- name: "Install font theme"
+  ansible.builtin.include_tasks:
+    file: font.yml
