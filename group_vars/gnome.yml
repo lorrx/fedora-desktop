@@ -17,3 +17,6 @@ software_dnf_packages:
 
 theme:
   cursor: "BreezeX-Dark"
+  icon:
+    name: "whitesur-orange"
+    accent: "orange"

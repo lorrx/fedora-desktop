@@ -2,3 +2,7 @@
 - name: "Install cursor theme"
   ansible.builtin.include_tasks:
     file: cursor.yml
+
+- name: "Install icon theme"
+  ansible.builtin.include_tasks:
+    file: icon.yml

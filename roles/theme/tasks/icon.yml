@@ -1,0 +1,21 @@
+---
+- name: "icon | Clone WhiteSur icon theme"
+  ansible.builtin.git:
+    repo: "https://github.com/vinceliuice/WhiteSur-icon-theme.git"
+    dest: "{{ globsettings_workdir }}/whitesur-icon-theme"
+    depth: 1
+  register: theme_icon_repo
+
+- name : "icon | Install WhiteSur icon theme"
+  ansible.builtin.shell:
+    cmd: |
+      ./install.sh -t {{ theme.icon.accent }}  -n {{ theme.icon.name }}
+    chdir: "{{ globsettings_workdir }}/whitesur-icon-theme"
+  when: not theme_icon_repo.after == theme_icon_repo.before
+  changed_when: true
+
+- name: "icon | Activate WhiteSur icon theme"
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/cursor-theme"
+    value: "'{{ theme.icon.name }}'"
+    state: present
