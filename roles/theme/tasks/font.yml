@@ -19,3 +19,5 @@
     - font-name
     - document-font-name
     - monospace-font-name
+  loop_control:
+    loop_var: theme_font_key
