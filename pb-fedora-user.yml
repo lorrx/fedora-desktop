@@ -1,0 +1,6 @@
+---
+- name: "Apply GNOME and system settings in the user context"
+  hosts: all
+  become: false
+  roles:
+    - theme

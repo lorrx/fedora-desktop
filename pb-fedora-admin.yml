@@ -1,0 +1,6 @@
+---
+- name: "Install required software on Fedora Workstation as root"
+  hosts: all
+  become: true
+  roles:
+    - software
