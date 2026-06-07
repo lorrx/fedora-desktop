@@ -9,3 +9,9 @@
   ansible.builtin.unarchive:
     src: files/BreezeX.tar.xz
     dest: ~/.icons/
+
+- name: "cursor | Set cursor"
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/cursor-theme"
+    value: "{{ theme.cursor }}"
+    state: present

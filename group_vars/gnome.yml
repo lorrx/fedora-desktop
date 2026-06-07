@@ -10,3 +10,6 @@ software_dnf_packages:
   - zsh
   - zsh-syntax-highlighting
   - gnome-tweaks
+
+theme:
+  cursor: "BreezeX-Dark"
