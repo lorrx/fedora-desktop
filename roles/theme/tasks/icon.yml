@@ -16,6 +16,6 @@
 
 - name: "icon | Activate WhiteSur icon theme"
   community.general.dconf:
-    key: "/org/gnome/desktop/interface/cursor-theme"
+    key: "/org/gnome/desktop/interface/icon-theme"
     value: "'{{ theme.icon.name }}-{{ theme.icon.accent }}-dark'"
     state: present
