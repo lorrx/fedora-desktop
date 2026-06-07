@@ -21,5 +21,5 @@ pip install --upgrade ansible
 # Run Ansible playbook in pull mode
 cd ${VENV_HOME}
 ANSIBLE_PULL_CMD=$(which ansible-pull)
-sudo ${ANSIBLE_PULL_CMD} -U https://github.com/lorrx/fedora-desktop.git -C main pb-fedora-admin.yml
+sudo ${ANSIBLE_PULL_CMD} -U https://github.com/lorrx/fedora-desktop.git -C main pb-fedora-admin.yml --extra-vars="ssh_user=$USER"
 ansible-pull -U https://github.com/lorrx/fedora-desktop.git -C main pb-fedora-user.yml

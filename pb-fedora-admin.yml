@@ -5,8 +5,8 @@
   tasks:
     - name: "Set user facts"
       ansible.builtin.set_fact:
-        globsettings_user: "{{ ansible_facts['user_id'] }}"
-        globsettings_group: "{{ ansible_facts['user_id'] }}"
+        globsettings_user: "{{ ssh_user }}"
+        globsettings_group: "{{ ssh_user }}"
 
     - name: "User facts"
       ansible.builtin.debug:
