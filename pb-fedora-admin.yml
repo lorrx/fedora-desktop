@@ -8,6 +8,10 @@
         globsettings_user: "{{ ansible_facts['user_id'] }}"
         globsettings_group: "{{ ansible_facts['user_id'] }}"
 
+    - name: "User facts"
+      ansible.builtin.debug:
+        msg: "User facts set: user={{ globsettings_user }}, group={{ globsettings_group }}"
+
 - name: "Install required software on Fedora Workstation as root"
   hosts: all
   become: true
