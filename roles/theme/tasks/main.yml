@@ -1,4 +1,8 @@
 ---
+- name: "Change basic theme settings"
+  ansible.builtin.include_tasks:
+    file: base.yml
+
 - name: "Install cursor theme"
   ansible.builtin.include_tasks:
     file: cursor.yml

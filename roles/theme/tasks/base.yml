@@ -1,0 +1,6 @@
+---
+- name: "base | Ensure dark mode is enabled"
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/color-scheme"
+    value: "'prefer-dark'"
+    state: present
