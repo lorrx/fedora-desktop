@@ -16,6 +16,8 @@ software_dnf_packages:
   - gnome-tweaks
 
 theme:
+  accent: "orange"
+  dark: true
   cursor: "BreezeX-Dark"
   icon:
     name: "whitesur"

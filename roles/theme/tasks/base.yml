@@ -1,6 +1,12 @@
 ---
-- name: "base | Ensure dark mode is enabled"
+- name: "base | Ensure dark mode is {{ 'enabled' if theme.dark else 'disabled' }}"
   community.general.dconf:
     key: "/org/gnome/desktop/interface/color-scheme"
-    value: "'prefer-dark'"
+    value: "{{ 'prefer-dark' if theme.dark else 'default' }}"
+    state: present
+
+- name: "base | Ensure accent color is {{ theme.accent }}"
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/accent-color"
+    value: "'{{ theme.accent }}'"
     state: present
