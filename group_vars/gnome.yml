@@ -16,7 +16,7 @@ software_dnf_packages:
   - gnome-tweaks
   - sassc
   - glib2-devel
-  - imagemagick
+  - ImageMagick
   - dialog
   - optipng
   - inkscape
