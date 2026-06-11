@@ -54,4 +54,4 @@
           -f flat \
           -d
         chdir: "{{ globsettings_workdir }}/whitesur-gtk-theme"
-        changed_when: true
+      changed_when: true
