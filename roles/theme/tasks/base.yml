@@ -10,3 +10,48 @@
     key: "/org/gnome/desktop/interface/accent-color"
     value: "'{{ theme.accent }}'"
     state: present
+
+- name: "base | Clone WhiteSur GTK theme"
+  ansible.builtin.git:
+    repo: https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+    dest: "{{ globsettings_workdir }}/whitesur-gtk-theme"
+    depth: 1
+    clone: yes
+    update: yes
+  register: theme_gtk_repo
+
+- name: "base | Install and configure WhiteSur GTK theme"
+  when: not theme_gtk_repo.after == theme_gtk_repo.before
+  block:
+    - name: "base | Install WhiteSur GTK theme"
+      ansible.builtin.shell:
+        cmd: |
+          ./install.sh \
+          -c {{ 'dark' if theme.dark else 'light' }} \
+          {{ '-HD' if theme.gtk.hd else '' }} \
+          {{ '--darker' if theme.gtk.darker else '' }} \
+          -l \
+          -t {{ theme.accent }} \
+          -f \
+          --shell -i {{ theme.gtk.icon }}
+        chdir: "{{ globsettings_workdir }}/whitesur-gtk-theme"
+      changed_when: true
+
+    - name: "base | Apply WhiteSur Flatpak theme"
+      ansible.builtin.shell:
+        cmd: |
+          ./tweaks.sh \
+          -c {{ 'dark' if theme.dark else 'light' }} \
+          -t {{ theme.accent }} \
+          -F
+        chdir: "{{ globsettings_workdir }}/whitesur-gtk-theme"
+      changed_when: true
+
+    - name: "base | Apply WhiteSur Firefox theme"
+      ansible.builtin.shell:
+        cmd: |
+          ./tweaks.sh \
+          -f flat \
+          -d
+        chdir: "{{ globsettings_workdir }}/whitesur-gtk-theme"
+        changed_when: true

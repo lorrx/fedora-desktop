@@ -4,6 +4,8 @@
     repo: "https://github.com/vinceliuice/WhiteSur-icon-theme.git"
     dest: "{{ globsettings_workdir }}/whitesur-icon-theme"
     depth: 1
+    clone: yes
+    update: yes
   register: theme_icon_repo
 
 - name : "icon | Install WhiteSur icon theme"
