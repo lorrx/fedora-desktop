@@ -20,6 +20,8 @@ software_dnf_packages:
   - dialog
   - optipng
   - inkscape
+  - ostree
+  - libappstream-glib
 
 theme:
   accent: "orange"
