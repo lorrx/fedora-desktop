@@ -10,3 +10,7 @@
 - name: "desktop | Enable and start Vicinae"
   ansible.builtin.include_tasks:
     file: vicinae.yml
+
+- name: "desktop | Configure wallpaper"
+  ansible.builtin.include_tasks:
+    file: wallpaper.yml

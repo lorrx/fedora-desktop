@@ -2,3 +2,4 @@
 desktop_dynamic_workspaces: "false"
 desktop_workspaces: "4"
 desktop_workspaces_only_on_primary: "false"
+desktop_wallpaper_directory: "~/.local/share/wallpaper"
