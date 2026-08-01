@@ -2,3 +2,7 @@
 - name: "desktop | Configure workspace settings"
   ansible.builtin.include_tasks:
     file: workspaces.yml
+
+- name: "desktop | Enable and start Vicinae"
+  ansible.builtin.include_tasks:
+    file: vicinae.yml

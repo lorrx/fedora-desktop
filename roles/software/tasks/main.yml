@@ -12,10 +12,3 @@
       become: true
   ansible.builtin.include_tasks:
     file: pkg.yml
-
-- name: "software | Enable and start Vicinae"
-  ansible.builtin.systemd_service:
-    name: vicinae
-    scope: user
-    state: started
-    enabled: true
