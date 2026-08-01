@@ -1,10 +1,11 @@
 ---
-- name: Get installed GNOME Shell major version
-  ansible.builtin.command: gnome-shell --version
+- name: "extensions | Get installed GNOME Shell major version"
+  ansible.builtin.command:
+    cmd: gnome-shell --version
   register: extensions_gnome_version_raw
   changed_when: false
 
-- name: Extract major GNOME version
+- name: "extensions | Extract major GNOME version"
   ansible.builtin.set_fact:
     gnome_major_version: "{{ extensions_gnome_version_raw.stdout | regex_search('GNOME Shell ([0-9]+)', '\\1') | first }}"
 
@@ -35,6 +36,14 @@
   loop_control:
     loop_var: extensions_unzip_item
   when: extensions_unzip_item.json is defined and extensions_unzip_item.json.download_url is defined
+
+- name: "extensions | Compile GSettings schemas for installed extensions"
+  ansible.builtin.command:
+    cmd: "glib-compile-schemas ~/.local/share/gnome-shell/extensions/{{ extensions_settings_item }}/schemas"
+  loop: "{{ extensions_packages }}"
+  loop_control:
+    loop_var: extensions_settings_item
+  changed_when: true
 
 - name: "extensions | Enable GNOME extensions"
   community.general.dconf:
