@@ -26,18 +26,15 @@
   loop_control:
     loop_var: extensions_info_item
 
-- debug:
-    var: extensions_info
-
 - name: "extensions | Download and unarchive GNOME extensions"
   ansible.builtin.unarchive:
-    src: "https://extensions.gnome.org/{{ extensions_unzip_item.download_url }}"
-    dest: "~/.local/share/gnome-shell/extensions/{{ extensions_unzip_item.uuid }}"
+    src: "https://extensions.gnome.org/{{ extensions_unzip_item.json.download_url }}"
+    dest: "~/.local/share/gnome-shell/extensions/{{ extensions_unzip_item.json.uuid }}"
     remote_src: true
   loop: "{{ extensions_info.results }}"
   loop_control:
     loop_var: extensions_unzip_item
-  when: extensions_unzip_item.download_url is defined
+  when: extensions_unzip_item.json is defined and extensions_unzip_item.json.download_url is defined
 
 - name: "extensions | Enable GNOME extensions"
   community.general.dconf:
