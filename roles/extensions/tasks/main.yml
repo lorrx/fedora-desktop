@@ -21,7 +21,7 @@
   ansible.builtin.uri:
     url: "https://extensions.gnome.org/extension-info/?uuid={{ extensions_info_item }}&shell_version={{ gnome_major_version }}"
     return_content: true
-    register: extensions_info
+  register: extensions_info
   loop: "{{ extensions_packages }}"
   loop_control:
     loop_var: extensions_info_item
