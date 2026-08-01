@@ -1,0 +1,30 @@
+---
+- name: "keyboard | bindings | Configure standard GNOME bindings"
+  community.general.dconf:
+    key: "{{ keyboad_binding.key }}"
+    value: "['{{ keyboad_binding.binding }}']"
+    state: present
+  loop: "{{ keyboard_standard_bindings }}"
+  loop_control:
+    loop_var: keyboad_binding
+
+- name: "keyboard | bindings | Configure custom bindings"
+  loop: "{{ keyboard_custom_bindings }}"
+  loop_control:
+    loop_var: keyboad_custom_binding
+  block:
+    - name: "keyboard | bindings | Register custom keybinding list for custom shortcuts"
+      community.general.dconf:
+        key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+        value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ keyboad_custom_binding.key }}/']"
+        state: present
+
+    - name: "keyboard | bindings | Configure custom keybinding"
+      community.general.dconf:
+        key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ keyboad_custom_binding.key }}/{{ keyboad_custom_binding_item.key }}"
+        value: "{{ keyboad_custom_binding_item.value }}"
+        state: present
+      loop: "{{ lookup('ansible.builtin.dict', keyboad_custom_binding) }}"
+      loop_control:
+        loop_var: keyboad_custom_binding_item
+      when: "not 'key' in keyboad_custom_binding_item.key"
