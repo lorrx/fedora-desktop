@@ -9,7 +9,7 @@
   ansible.builtin.set_fact:
     gnome_major_version: "{{ extensions_gnome_version_raw.stdout | regex_search('GNOME Shell ([0-9]+)', '\\1') | first }}"
 
-- name: Check if extensions are already installed
+- name: "extensions | Check if extensions are already installed"
   ansible.builtin.stat:
     path: "~/.local/share/gnome-shell/extensions/{{ extensions_check_item }}"
   loop: "{{ extensions_packages }}"
@@ -17,6 +17,12 @@
     loop_var: extensions_check_item
   register: extension_checks
   changed_when: false
+
+- name: Filter list to missing extension UUIDs
+  ansible.builtin.set_fact:
+    missing_extensions: "{{ (missing_extensions | default([]) + [item.extensions_check_item]) }}"
+  loop: "{{ extension_checks.results }}"
+  when: not item.stat.exists
 
 - name: "extensions | Ensure GNOME extension folder exists"
   ansible.builtin.file:
@@ -29,36 +35,30 @@
 
 - name: "extensions | Get extension details form GNOME API"
   ansible.builtin.uri:
-    url: "https://extensions.gnome.org/extension-info/?uuid={{ extensions_info_item.item }}&shell_version={{ gnome_major_version }}"
+    url: "https://extensions.gnome.org/extension-info/?uuid={{ extensions_info_item }}&shell_version={{ gnome_major_version }}"
     return_content: true
   register: extensions_info
-  loop: "{{ extension_checks.results }}"
+  loop: "{{ missing_extensions | default([]) }}"
   loop_control:
     loop_var: extensions_info_item
-  when: not extensions_info_item.stat.exists
 
 - name: "extensions | Download and unarchive GNOME extensions"
   ansible.builtin.unarchive:
     src: "https://extensions.gnome.org/{{ extensions_unzip_item.json.download_url }}"
     dest: "~/.local/share/gnome-shell/extensions/{{ extensions_unzip_item.json.uuid }}"
     remote_src: true
-  loop: "{{ extension_info.results | default([]) }}"
+  loop: "{{ extensions_info.results }}"
   loop_control:
     loop_var: extensions_unzip_item
-  when:
-    - extensions_unzip_item.skipped is not defined or not extensions_unzip_item.skipped
-    - extensions_unzip_item.json is defined and extensions_unzip_item.json.download_url is defined
+  when: extensions_unzip_item.json is defined and extensions_unzip_item.json.download_url is defined
 
 - name: "extensions | Compile GSettings schemas for installed extensions"
   ansible.builtin.command:
-    cmd: "glib-compile-schemas ~/.local/share/gnome-shell/extensions/{{ extensions_settings_item.item.json.uuid }}/schemas"
-  loop: "{{ extension_info.results | default([]) }}"
+    cmd: "glib-compile-schemas ~/.local/share/gnome-shell/extensions/{{ extensions_settings_item }}/schemas"
+  loop: "{{ missing_extensions | default([]) }}"
   loop_control:
     loop_var: extensions_settings_item
   changed_when: true
-  when:
-    - extensions_settings_item.skipped is not defined or not extensions_settings_item.skipped
-    - extensions_settings_item.item.json is defined
 
 - name: "extensions | Enable GNOME extensions"
   community.general.dconf:
