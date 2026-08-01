@@ -1,14 +1,24 @@
 ---
-- name: "Software | Include repository tasks"
+- name: "software | Include repository tasks"
   args:
     apply:
       become: true
   ansible.builtin.include_tasks:
     file: repo.yml
 
-- name: "Software | Include package tasks"
+- name: "software | Include package tasks"
   args:
     apply:
       become: true
   ansible.builtin.include_tasks:
     file: pkg.yml
+
+- name: "software | Enable and start Vicinae"
+  args:
+    apply:
+      become: true
+  ansible.builtin.systemd:
+    name: vicinae
+    daemon_reload: true
+    state: started
+    enabled: true
