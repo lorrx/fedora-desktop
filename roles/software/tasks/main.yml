@@ -17,7 +17,7 @@
   args:
     apply:
       become: true
-  ansible.builtin.systemd:
+  ansible.builtin.systemd_service:
     name: vicinae
     daemon_reload: true
     state: started
