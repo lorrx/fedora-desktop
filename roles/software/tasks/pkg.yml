@@ -1,5 +1,12 @@
 ---
-- name: "Software | Install all requested DNF packages"
+- name: "software | Install all requested DNF packages"
   ansible.builtin.dnf:
     name: "{{ software_dnf_packages }}"
+    state: present
+
+- name: "software | Install all requested Flatpak packages"
+  community.general.flatpak:
+    name: "{{ software_flathub_packages }}"
+    method: system
+    remote: flathub
     state: present

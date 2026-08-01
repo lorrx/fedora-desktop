@@ -6,6 +6,9 @@ globsettings_group: ''
 software_copr_repos:
   - quadratech188/vicinae
 
+software_flathub_packages:
+  - com.mattjakeman.ExtensionManager
+
 software_dnf_packages:
   - sushi
   - vicinae
