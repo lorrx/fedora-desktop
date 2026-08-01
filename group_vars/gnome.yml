@@ -51,3 +51,25 @@ theme:
   font:
     name: "JetBrains Mono Regular"
     size: 11
+
+keyboard_standard_bindings:
+  - key: "/org/gnome/settings-daemon/plugins/media-keys/home"
+    binding: '<Super>e'
+  - key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-1"
+    binding: '<Shift>F1'
+  - key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-2"
+    binding: '<Shift>F2'
+  - key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-3"
+    binding: '<Shift>F3'
+  - key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-4"
+    binding: '<Shift>F4'
+
+keyboard_custom_bindings:
+  - key: custom-system-monitor
+    name: System Monitor
+    command: gnome-system-monitor
+    binding: '<Shift><Ctrl>Escape'
+  - key: vicinae
+    name: Vicinae
+    command: vicinae toggle
+    binding: '<Shift>space'
