@@ -58,7 +58,7 @@
 
 - name: "base | Set theme name fact"
   ansible.builtin.set_fact:
-    theme_name: "{{ theme.gtk.name }}-{{ 'Dark' if theme.dark else 'Light' }}-{{ theme.accent | capitalize }}"
+    theme_name: "{{ theme.gtk.name }}-{{ 'Dark' if theme.dark else 'Light' }}-{{ theme.accent }}"
 
 - name: "base | Set GNOME Shell theme to {{ theme_name }}"
   community.general.dconf:
