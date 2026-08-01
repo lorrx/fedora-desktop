@@ -1,3 +1,4 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# tasks file for ./roles/keyboard
+- name: "keyboard | Configure bindings"
+  ansible.builtin.include_tasks:
+    file: bindings.yml
