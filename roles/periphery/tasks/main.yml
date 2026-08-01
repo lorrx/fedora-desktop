@@ -1,0 +1,8 @@
+---
+- name: "periphery | Configure bindings"
+  ansible.builtin.include_tasks:
+    file: bindings.yml
+
+- name: "periphery | Configure mouse"
+  ansible.builtin.include_tasks:
+    file: mouse.yml

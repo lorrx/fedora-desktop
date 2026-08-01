@@ -1,4 +1,0 @@
----
-- name: "keyboard | Configure bindings"
-  ansible.builtin.include_tasks:
-    file: bindings.yml

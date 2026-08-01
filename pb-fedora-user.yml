@@ -3,7 +3,7 @@
   hosts: all
   become: false
   roles:
-    - keyboard
+    - periphery
     - extensions
     - theme
     - desktop

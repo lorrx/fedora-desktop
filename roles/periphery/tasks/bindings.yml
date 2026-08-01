@@ -1,0 +1,45 @@
+---
+- name: "periphery | bindings | Configure standard GNOME bindings"
+  community.general.dconf:
+    key: "{{ periphery_binding.key }}"
+    value: "['{{ periphery_binding.binding }}']"
+    state: present
+  loop: "{{ periphery_standard_bindings }}"
+  loop_control:
+    loop_var: periphery_binding
+
+- name: "periphery | bindings | Register custom keybinding list for custom shortcuts"
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+    value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ periphery_custom_binding.key }}/']"
+    state: present
+  loop: "{{ periphery_custom_bindings }}"
+  loop_control:
+    loop_var: periphery_custom_binding
+
+- name: "periphery | bindings | Configure custom keybinding name"
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ periphery_custom_binding_name.key }}/name"
+    value: "'{{ periphery_custom_binding_name.name }}'"
+    state: present
+  loop: "{{ periphery_custom_bindings }}"
+  loop_control:
+    loop_var: periphery_custom_binding_name
+
+- name: "periphery | bindings | Configure custom keybinding command"
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ periphery_custom_binding_cmd.key }}/command"
+    value: "'{{ periphery_custom_binding_cmd.command }}'"
+    state: present
+  loop: "{{ periphery_custom_bindings }}"
+  loop_control:
+    loop_var: periphery_custom_binding_cmd
+
+- name: "periphery | bindings | Configure custom keybinding binding"
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ periphery_custom_binding_bind.key }}/binding"
+    value: "'{{ periphery_custom_binding_bind.binding }}'"
+    state: present
+  loop: "{{ periphery_custom_bindings }}"
+  loop_control:
+    loop_var: periphery_custom_binding_bind

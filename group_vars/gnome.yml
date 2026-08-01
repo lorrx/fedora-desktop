@@ -53,7 +53,7 @@ theme:
     name: "JetBrains Mono Regular"
     size: 11
 
-keyboard_standard_bindings:
+periphery_standard_bindings:
   - key: "/org/gnome/settings-daemon/plugins/media-keys/home"
     binding: '<Super>e'
   - key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-1"
@@ -65,7 +65,7 @@ keyboard_standard_bindings:
   - key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-4"
     binding: '<Shift>F4'
 
-keyboard_custom_bindings:
+periphery_custom_bindings:
   - key: custom-system-monitor
     name: System Monitor
     command: gnome-system-monitor

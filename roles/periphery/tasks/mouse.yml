@@ -1,0 +1,5 @@
+---
+- name: "periphery | mouse | Set middle mouse button to paste"
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/gtk-enable-primary-paste"
+    value: "{{ keyboard_mouse_middle_button | default('false') }}"
