@@ -3,31 +3,8 @@
   hosts: all
   become: false
   connection: local
-  vars:
-    extensions_packages:
-      - azwallpaper@azwallpaper.gitlab.com
-      - blur-my-shell@aunetx
-      - dash-to-dock@micxgx.gmail.com
-      - user-theme@gnome-shell-extensions.gcampax.github.com
-      - tilingshell@ferrarodomenico.com
-      - azclock@azclock.gitlab.com
-      - vicinae@dagimg-dot
-      - burn-my-windows@schneegans.github.com
   tasks:
-    - name: "extensions | Check if extensions are already installed"
-      ansible.builtin.stat:
-        path: "~/.local/share/gnome-shell/extensions/{{ extensions_check_item }}"
-      loop: "{{ extensions_packages }}"
-      loop_control:
-        loop_var: extensions_check_item
-      register: extension_checks
-
-    - name: Filter list to missing extension UUIDs
-      ansible.builtin.set_fact:
-        missing_extensions: "{{ (missing_extensions | default([]) + [item.extensions_check_item]) }}"
-      loop: "{{ extension_checks.results }}"
-      when: not item.stat.exists
 
     - debug:
-        var: missing_extensions
+        msg: "{{ ansible_facts['env']['HOME'] }}"
 
