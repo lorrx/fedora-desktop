@@ -66,7 +66,7 @@ periphery_standard_bindings:
     binding: '<Shift>F4'
 
 periphery_custom_bindings:
-  - key: system-monitor
+  - key: systemmonitor
     name: System Monitor
     command: gnome-system-monitor
     binding: '<Shift><Ctrl>Escape'
