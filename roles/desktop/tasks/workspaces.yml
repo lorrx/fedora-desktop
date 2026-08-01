@@ -2,7 +2,7 @@
 - name: "desktop | workspaces | Configure fixed number of workspaces"
   community.general.dconf:
     key: "{{ desktop_workspaces_setting.key }}"
-    value: "'{{ desktop_workspaces_setting.value }}'"
+    value: "{{ desktop_workspaces_setting.value }}"
   loop:
     - { key: "/org/gnome/mutter/dynamic-workspaces", value: "{{ desktop_dynamic_workspaces }}" }
     - { key: "/org/gnome/desktop/wm/preferences/num-workspaces", value: "{{ desktop_workspaces }}" }
