@@ -1,0 +1,24 @@
+---
+- name: "extensions | Ensure GNOME extension folder exists"
+  ansible.builtin.file:
+    path: "~/.local/share/gnome-shell/extensions/{{ extensions_item }}"
+    mode: '0755'
+    state: directory
+  loop: "{{ extensions_packages }}"
+  loop_control:
+    loop_var: extensions_item
+
+- name: "extensions | Download and unarchive GNOME extensions"
+  ansible.builtin.unarchive:
+    src: "https://extensions.gnome.org/download-extension/{{ extensions_unzip_item }}.shell-extension.zip"
+    dest: "~/.local/share/gnome-shell/extensions/{{ extensions_unzip_item }}"
+    remote_src: true
+  loop: "{{ extensions_packages }}"
+  loop_control:
+    loop_var: extensions_unzip_item
+  ignore_errors: true
+
+- name: "extensions | Enable GNOME extensions"
+  community.general.dconf:
+    key: "/org/gnome/shell/enabled-extensions"
+    value: "{{ extensions_packages | list | to_json }}"

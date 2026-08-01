@@ -4,5 +4,6 @@
   become: false
   roles:
     - keyboard
+    - extensions
     - theme
     - desktop
