@@ -21,7 +21,7 @@
   register: theme_gtk_repo
 
 - name: "base | Install and configure WhiteSur GTK theme"
-#  when: not theme_gtk_repo.after == theme_gtk_repo.before
+  when: not theme_gtk_repo.after == theme_gtk_repo.before
   block:
     - name: "base | Install WhiteSur GTK theme"
       ansible.builtin.shell:
