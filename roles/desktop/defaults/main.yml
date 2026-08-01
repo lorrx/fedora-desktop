@@ -1,3 +1,3 @@
 ---
-desktop_dynamic_workspaces: false
-desktop_workspaces: 4
+desktop_dynamic_workspaces: "false"
+desktop_workspaces: "4"
