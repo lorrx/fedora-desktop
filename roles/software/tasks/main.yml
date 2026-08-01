@@ -19,6 +19,5 @@
       become: true
   ansible.builtin.systemd_service:
     name: vicinae
-    daemon_reload: true
     state: started
     enabled: true
