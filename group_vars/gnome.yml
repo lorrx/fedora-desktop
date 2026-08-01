@@ -44,6 +44,7 @@ theme:
     icon: fedora
     hd: true
     darker: true
+    name: "WhiteSur"
   cursor: "BreezeX-Dark"
   icon:
     name: "whitesur"

@@ -55,3 +55,17 @@
           -d
         chdir: "{{ globsettings_workdir }}/whitesur-gtk-theme"
       changed_when: true
+
+- name: "base | Set theme name fact"
+  ansible.builtin.set_fact:
+    theme_name: "{{ theme.gtk.name }}-{{ 'Dark' if theme.dark else 'Light' }}-{{ theme.accent | capitalize }}"
+
+- name: "base | Set GNOME Shell theme to {{ theme_name }}"
+  community.general.dconf:
+    key: "{{ theme_dconf_key }}"
+    value: "'{{ theme_name }}'"
+  loop:
+    - /org/gnome/shell/extensions/user-theme/name
+    - /org/gnome/desktop/interface/gtk-theme
+  loop_control:
+    loop_var: theme_dconf_key
