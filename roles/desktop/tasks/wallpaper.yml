@@ -1,11 +1,11 @@
 ---
 - name: "wallpaper | Ensure the wallpaper directory exists"
   ansible.builtin.file:
-    path: "{{ desktop_wallpaper_directory }}"
+    path: "{{ desktop_wallpaper_directory }}/wallpaper"
     state: directory
     mode: '0755'
 
-- name: "wallpaper | Copy wallpaper to {{ desktop_wallpaper_directory }}"
+- name: "wallpaper | Copy wallpaper to {{ desktop_wallpaper_directory }}/wallpaper"
   ansible.builtin.unarchive:
     src: files/wallpaper.tar.xz
     dest: "{{ desktop_wallpaper_directory }}"
