@@ -1,0 +1,6 @@
+---
+- name: "desktop | windows | Configure button layout"
+  community.general.dconf:
+    key: "/org/gnome/desktop/wm/preferences/button-layout"
+    value: "'close,minimize,maximize:appmenu'"
+    state: present

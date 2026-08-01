@@ -3,6 +3,10 @@
   ansible.builtin.include_tasks:
     file: workspaces.yml
 
+- name: "desktop | Configure windows settings"
+  ansible.builtin.include_tasks:
+    file: windows.yml
+
 - name: "desktop | Enable and start Vicinae"
   ansible.builtin.include_tasks:
     file: vicinae.yml
