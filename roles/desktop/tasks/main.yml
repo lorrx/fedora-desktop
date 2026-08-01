@@ -1,0 +1,4 @@
+---
+- name: "desktop | Configure workspace settings"
+  ansible.builtin.include_tasks:
+    file: workspaces.yml
