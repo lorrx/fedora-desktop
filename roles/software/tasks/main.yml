@@ -14,8 +14,8 @@
     file: pkg.yml
 
 - name: "software | Enable and start Vicinae"
-  become: true
   ansible.builtin.systemd_service:
     name: vicinae
+    scope: user
     state: started
     enabled: true
