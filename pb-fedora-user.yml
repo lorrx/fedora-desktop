@@ -3,4 +3,5 @@
   hosts: all
   become: false
   roles:
+    - keyboard
     - theme
