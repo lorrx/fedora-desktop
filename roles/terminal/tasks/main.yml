@@ -1,1 +1,8 @@
 ---
+- name: "terminal | Install and configure oh-my-zsh"
+  ansible.builtin.include_tasks:
+    file: oh-my-zsh.yml
+
+- name: "terminal | Configure ZSH terminal"
+  ansible.builtin.include_tasks:
+    file: zsh.yml

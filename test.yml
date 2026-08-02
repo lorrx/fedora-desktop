@@ -4,9 +4,9 @@
   become: false
   connection: local
   vars:
-    file_test: "{{ lookup('ansible.builtin.file', 'roles/desktop/files/tilingshell-layouts.json') }}"
+    user: "{{ ansible_facts['user_id'] }}"
   tasks:
 
     - debug:
-        var: file_test
+        var: user
 

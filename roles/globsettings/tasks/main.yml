@@ -2,3 +2,8 @@
 - name: "Create global directories"
   ansible.builtin.include_tasks:
     file: directories.yml
+
+- name: "Set default shell"
+  ansible.builtin.include_tasks:
+    file: shell.yml
+

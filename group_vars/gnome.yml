@@ -2,6 +2,7 @@
 globsettings_workdir: /opt/lorrx
 globsettings_user: ''
 globsettings_group: ''
+globsettings_shell: /usr/bin/zsh
 
 software_copr_repos:
   - quadratech188/vicinae

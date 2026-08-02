@@ -1,0 +1,44 @@
+---
+- name: "terminal | oh-my-zsh | Copy MesloLGS font"
+  ansible.builtin.unarchive:
+    src: files/MesloLGS.tar.xz
+    dest: "{{ ansible_facts['env']['HOME'] }}/.local/share/fonts"
+
+- name: "terminal | oh-my-zsh | Clone oh-my-zsh repository"
+  ansible.builtin.git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh"
+    depth: 1
+    version: master
+
+- name: "terminal | oh-my-zsh | Powerlevel10k repository"
+  ansible.builtin.git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/powerlevel10k"
+    depth: 1
+    version: master
+
+- name: "terminal | oh-my-zsh | Clone custom plugins repository"
+  ansible.builtin.git:
+    repo: "{{ terminal_plugin.repo }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/plugins/{{ terminal_plugin.name }}"
+    depth: 1
+    version: master
+  loop_control:
+    loop_var: terminal_plugin
+  loop:
+    - { name: "zsh-autosuggestions", repo: "https://github.com/zsh-users/zsh-autosuggestions" }
+    - { name: "you-should-use", repo: "https://github.com/MichaelAquilina/zsh-you-should-use" }
+    - { name: "zsh-bat", repo: "https://github.com/fdellwing/zsh-bat" }
+    - { name: "zsh-syntax-highlighting", repo: "https://github.com/zsh-users/zsh-syntax-highlighting" }
+
+- name: "terminal | zsh | Set zsh theme font in GNOME terminal"
+  community.general.dconf:
+    key: "{{ terminal_font_setting.key }}"
+    value: "{{ terminal_font_setting.value }}"
+    state: present
+  loop_control:
+    loop_var: terminal_font_setting
+  loop:
+    - {key: "/org/gnome/Ptyxis/use-system-font", value: "false"}
+    - {key: "/org/gnome/Ptyxis/font-name", value: "'MesloLGS NF 10'"}

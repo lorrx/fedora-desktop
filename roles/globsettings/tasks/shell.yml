@@ -1,0 +1,5 @@
+---
+- name: "globsettings | shell | Set zsh as default shell"
+  ansible.builtin.user:
+    name: "{{ globsettings_user }}"
+    shell: "{{ globsettings_shell }}"

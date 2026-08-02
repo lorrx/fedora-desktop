@@ -1,0 +1,9 @@
+---
+- name: "terminal | zsh | Configure .zshrc"
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
+    create: true
+    mode: '0644'
+    marker: "# {mark} ANSIBLE MANAGED ZSH CONFIG"
+    insertbefore: BOF
+    block: "{{ lookup('template', 'zshrc.j2') }}"

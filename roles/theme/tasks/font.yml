@@ -8,7 +8,7 @@
 - name: "font | Copy JetBrains Mono font"
   ansible.builtin.unarchive:
     src: files/JetBrainsMono.zip
-    dest: ~/.local/share/fonts
+    dest: "{{ ansible_facts['env']['HOME'] }}/.local/share/fonts"
 
 - name: "cursor | Set interface font"
   community.general.dconf:
