@@ -3,8 +3,10 @@
   hosts: all
   become: false
   connection: local
+  vars:
+    file_test: "{{ lookup('ansible.builtin.file', 'roles/desktop/files/tilingshell-layouts.json') }}"
   tasks:
 
     - debug:
-        msg: "{{ ansible_facts['env']['HOME'] }}"
+        var: file_test
 

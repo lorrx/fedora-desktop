@@ -19,6 +19,10 @@
   ansible.builtin.include_tasks:
     file: shell.yml
 
+- name: "desktop | Configure tilingshell settings"
+  ansible.builtin.include_tasks:
+    file: tilingshell.yml
+
 - name: "desktop | Configure dock settings"
   ansible.builtin.include_tasks:
     file: dock.yml

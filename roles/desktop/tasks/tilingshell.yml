@@ -1,0 +1,13 @@
+---
+- name: "desktop | tilingshell | Import shell vars"
+  ansible.builtin.include_vars:
+    file: vars/tilingshell.yml
+
+- name: "desktop | tilingshell | Set tiling shell settings"
+  ansible.builtin.dconf:
+    key: "{{ desktop_tilingshell_setting.key }}"
+    value: "{{ desktop_tilingshell_setting.value }}"
+    state: present
+  loop: "{{ desktop_tilingshell_settings }}"
+  loop_control:
+    loop_var: desktop_tilingshell_setting
