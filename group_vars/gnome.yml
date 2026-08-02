@@ -66,11 +66,11 @@ periphery_standard_bindings:
     binding: '<Shift>F4'
 
 periphery_custom_bindings:
-  - key: custom0
+  - key: custom1
     name: System Monitor
     command: gnome-system-monitor
     binding: '<Shift><Ctrl>Escape'
-  - key: custom1
+  - key: custom2
     name: Vicinae
     command: vicinae toggle
     binding: '<Shift>space'
