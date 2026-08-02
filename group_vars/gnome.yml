@@ -67,15 +67,15 @@ periphery_standard_bindings:
     binding: '<Shift>F4'
 
 periphery_custom_bindings:
-  - key: custom0
+  - key: system-monitor
     name: System Monitor
     command: gnome-system-monitor
     binding: '<Shift><Ctrl>Escape'
-  - key: custom1
+  - key: vicinae
     name: Vicinae
     command: vicinae toggle
     binding: '<Shift>space'
-  - key: custom2
+  - key: terminal
     name: Terminal
     command: ptyxis --new-window
     binding: '<Super>r'
