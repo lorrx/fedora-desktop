@@ -11,11 +11,8 @@
 - name: "periphery | bindings | Register custom keybinding list for custom shortcuts"
   community.general.dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
-    value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ periphery_custom_binding.key }}/']"
+    value: "{{ periphery_custom_bindings | map(attribute='key') | map('regex_replace', '^(.*)$', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/\\1/') | list | to_json }}"
     state: present
-  loop: "{{ periphery_custom_bindings }}"
-  loop_control:
-    loop_var: periphery_custom_binding
 
 - name: "periphery | bindings | Configure custom keybinding name"
   community.general.dconf:

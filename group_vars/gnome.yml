@@ -78,4 +78,4 @@ periphery_custom_bindings:
   - key: custom2
     name: Terminal
     command: ptyxis --new-window
-    binding: '<Super>t'
+    binding: '<Super>r'
