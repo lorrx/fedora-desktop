@@ -19,4 +19,8 @@
   ansible.builtin.include_tasks:
     file: shell.yml
 
+- name: "desktop | Configure dock settings"
+  ansible.builtin.include_tasks:
+    file: dock.yml
+
 # ToDo: Add all extension settings by using the "/org/gnome/shell/extensions/" key

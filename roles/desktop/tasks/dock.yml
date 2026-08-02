@@ -1,0 +1,13 @@
+---
+- name: "desktop | dock | Import dock vars"
+  ansible.builtin.include_vars:
+    file: vars/dock.yml
+
+- name: "desktop | dock | Set dash-to-dock settings"
+  ansible.builtin.dconf:
+    key: "{{ desktop_dock_setting.key }}"
+    value: "{{ desktop_dock_setting.value }}"
+    state: present
+  loop: "{{ desktop_dock_settings }}"
+  loop_control:
+    loop_var: desktop_dock_setting
