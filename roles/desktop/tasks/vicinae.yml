@@ -5,3 +5,9 @@
     scope: user
     state: started
     enabled: true
+
+- name: "desktop | vicinae | Remove Vicinae indicator"
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/vicinae/show-status-indicator"
+    value: "false"
+    state: present
