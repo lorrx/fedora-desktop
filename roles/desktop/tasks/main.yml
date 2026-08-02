@@ -15,4 +15,8 @@
   ansible.builtin.include_tasks:
     file: wallpaper.yml
 
+- name: "desktop | Configure shell settings"
+  ansible.builtin.include_tasks:
+    file: shell.yml
+
 # ToDo: Add all extension settings by using the "/org/gnome/shell/extensions/" key

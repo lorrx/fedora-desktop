@@ -1,0 +1,7 @@
+---
+desktop_shell_base_dconf_key: "/org/gnome/shell/extensions/blur-my-shell"
+desktop_shell_settings:
+  - key: "{{ desktop_shell_base_dconf_key }}/panel/static-blur"
+    value: "false"
+  - key: "{{ desktop_shell_base_dconf_key }}/dash-to-dock/blur"
+    value: "false"

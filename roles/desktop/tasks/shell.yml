@@ -1,0 +1,13 @@
+---
+- name: "desktop | shell | Import shell vars"
+  ansible.builtin.include_vars:
+    file: vars/shell.yml
+
+- name: "desktop | shell | Set blur-by-shell settings"
+  ansible.builtin.dconf:
+    key: "{{ desktop_shell_setting.key }}"
+    value: "{{ desktop_shell_setting.value }}"
+    state: present
+  loop: "{{ desktop_shell_settings }}"
+  loop_control:
+    loop_var: desktop_shell_setting
