@@ -55,13 +55,13 @@ theme:
     size: 11
 
 terminal_omz_plugins:
-  - name: "zsh-autosuggestions",
+  - name: "zsh-autosuggestions"
     repo: "https://github.com/zsh-users/zsh-autosuggestions"
-  - name: "you-should-use",
+  - name: "you-should-use"
     repo: "https://github.com/MichaelAquilina/zsh-you-should-use"
-  - name: "zsh-bat",
+  - name: "zsh-bat"
     repo: "https://github.com/fdellwing/zsh-bat"
-  - name: "zsh-syntax-highlighting",
+  - name: "zsh-syntax-highlighting"
     repo: "https://github.com/zsh-users/zsh-syntax-highlighting"
 
 periphery_standard_bindings:
