@@ -1,6 +1,6 @@
 desktop_dock_base_dconf_key: "/org/gnome/shell/extensions/dash-to-dock"
 desktop_dock_settings:
-  - key: "{{ desktop_dock_base_dconf_key }}/desktop_shell_settings"
+  - key: "{{ desktop_dock_base_dconf_key }}/dash-max-icon-size"
     value: "32"
   - key: "{{ desktop_dock_base_dconf_key }}/show-show-apps-button"
     value: "false"
