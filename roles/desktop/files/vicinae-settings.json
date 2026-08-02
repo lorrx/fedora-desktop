@@ -1,0 +1,25 @@
+{
+   "$schema": "https://vicinae.com/schemas/config.json",
+   "font": {
+      "normal": {
+         "family": "JetBrains Mono"
+      }
+   },
+   "theme": {
+      "light": {
+         "name": "elementary-light"
+      },
+      "dark": {
+         "name": "elementary-dark"
+      }
+   },
+   "telemetry": {
+      "system_info": false
+   },
+   "launcher_window": {
+      "opacity": 0.9,
+      "compact_mode": {
+         "enabled": true
+      }
+   }
+}

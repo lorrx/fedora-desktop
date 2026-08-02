@@ -6,6 +6,12 @@
     state: started
     enabled: true
 
+- name: "vicinae | Ensure correct config file exists"
+  ansible.builtin.copy:
+    src: "files/vicinae-settings.json"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/vicinae/settings.json"
+    mode: '0644'
+
 - name: "desktop | vicinae | Remove Vicinae indicator"
   community.general.dconf:
     key: "/org/gnome/shell/extensions/vicinae/show-status-indicator"
