@@ -1,7 +1,7 @@
 ---
 - name: "font | Ensure fonts directory exists"
   ansible.builtin.file:
-    path: ~/.local/share/fonts
+    path: "{{ ansible_facts['env']['HOME'] }}/.local/share/fonts"
     state: directory
     mode: '0755'
 
