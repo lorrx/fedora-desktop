@@ -12,3 +12,13 @@
       become: true
   ansible.builtin.include_tasks:
     file: pkg.yml
+
+- name: "software | Apply theme fix for Flatpak apps"
+  args:
+    apply:
+      become: true
+  ansible.builtin.shell:
+    cmd: |
+      flatpak override --filesystem=xdg-config/gtk-3.0 && \
+      flatpak override --filesystem=xdg-config/gtk-4.0
+  changed_when: true
