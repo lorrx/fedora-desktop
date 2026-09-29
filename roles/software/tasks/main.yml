@@ -14,9 +14,7 @@
     file: pkg.yml
 
 - name: "software | Apply theme fix for Flatpak apps"
-  args:
-    apply:
-      become: true
+  become: true
   ansible.builtin.shell:
     cmd: |
       flatpak override --filesystem=xdg-config/gtk-3.0 && \
