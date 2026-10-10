@@ -10,11 +10,3 @@
     method: system
     remote: flathub
     state: present
-
-- name: "software | Apply DNF config manger options"
-  community.general.dnf_config_manager:
-    name: "{{ software_dnf_conf_manager_option.name }}"
-    state: "{{ 'enabled' if software_dnf_conf_manager_option.enabled else 'disabled' }}"
-  loop: "{{ software_dnf_conf_manager }}"
-  loop_control:
-    loop_var: software_dnf_conf_manager_option
