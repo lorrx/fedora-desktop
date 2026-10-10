@@ -55,6 +55,8 @@ theme:
   font:
     name: "JetBrains Mono Regular"
     size: 11
+  login:
+    background: ".local/share/wallpaper/749020.jpg"
 
 terminal_omz_plugins:
   - name: "zsh-autosuggestions"

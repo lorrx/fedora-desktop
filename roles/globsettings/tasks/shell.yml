@@ -3,3 +3,16 @@
   ansible.builtin.user:
     name: "{{ globsettings_user }}"
     shell: "{{ globsettings_shell }}"
+
+- name: "globsettings | shell | Check if the theme folder is already present"
+  ansible.builtin.stat:
+    path: "{{ globsettings_workdir }}/whitesur-gtk-theme"
+    register: globsettings_theme_folder
+
+- name: "globsettings | shell | Configure login shell"
+  ansible.builtin.shell:
+    chdir: "{{ globsettings_workdir }}/whitesur-gtk-theme"
+    cmd: |
+      ./tweaks.sh -g  -i "{{ theme.gtk.icon }}" -b /home/{{ globsettings_user }}/{{ theme.login.background }}
+  when: globsettings_theme_folder.stat.exists
+  changed_when: false
