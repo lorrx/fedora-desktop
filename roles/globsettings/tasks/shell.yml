@@ -7,7 +7,7 @@
 - name: "globsettings | shell | Check if the theme folder is already present"
   ansible.builtin.stat:
     path: "{{ globsettings_workdir }}/whitesur-gtk-theme"
-    register: globsettings_theme_folder
+  register: globsettings_theme_folder
 
 - name: "globsettings | shell | Configure login shell"
   ansible.builtin.shell:
