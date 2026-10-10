@@ -6,6 +6,11 @@ globsettings_shell: /usr/bin/zsh
 
 software_copr_repos:
   - quadratech188/vicinae
+  - ublue-os/packages
+
+software_dnf_conf_manager:
+  - name: "copr:copr.fedorainfracloud.org:ublue-os:packages"
+    enabled: false
 
 software_flathub_packages:
   - com.mattjakeman.ExtensionManager
@@ -27,6 +32,7 @@ software_dnf_packages:
   - ostree
   - libappstream-glib
   - unzip
+  - gnome-rounded-blur
 
 extensions_packages:
   - azwallpaper@azwallpaper.gitlab.com

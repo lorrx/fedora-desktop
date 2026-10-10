@@ -1,4 +1,5 @@
 ---
+software_dnf_conf_manager: []
 software_copr_repos: []
 software_packages: []
 software_flathub_packages: []
