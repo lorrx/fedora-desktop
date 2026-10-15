@@ -29,6 +29,7 @@ software_dnf_packages:
   - libappstream-glib
   - unzip
   - gnome-rounded-blur
+  - gnome-shell-extension-appindicator
 
 extensions_packages:
   - azwallpaper@azwallpaper.gitlab.com
